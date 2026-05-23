@@ -1,17 +1,3 @@
-# Cloudflare Pages config for agentscape.net.
-# Project will be created on first deploy via:
-#   wrangler pages project create agentscape-net --production-branch=main
-# Then:
-#   wrangler pages deploy ./.output/public --project-name agentscape-net
-
 name = "agentscape-net"
-compatibility_date = "2026-05-23"
-pages_build_output_dir = "./.output/public"
-
-# D1 binding — database created via:
-#   wrangler d1 create agentscape-canon
-# Replace database_id once provisioned.
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "agentscape-canon"
-# database_id = "<fill-after-d1-create>"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-05-01"
