@@ -1,0 +1,22 @@
+{
+  "issue": 1,
+  "status": "in-progress",
+  "first_section_published_at": "2026-05-23T13:38:30Z",
+  "canonical_url": "https://agentscape.net/issues/1/",
+  "sections": [
+    {
+      "section": 1,
+      "slug": "permission-prompt-load-bearing",
+      "title": "The permission prompt is now load-bearing",
+      "published_at": "2026-05-23T13:38:30Z",
+      "html_url": "https://agentscape.net/issues/1/permission-prompt-load-bearing/",
+      "json_url": "https://agentscape.net/issues/1/permission-prompt-load-bearing/index.json",
+      "spine_tags": [
+        "what-best-practices-are-being-made",
+        "what-is-now-hard-to-undo"
+      ],
+      "source_hash_sha256": "218516be5d41adf7f91c55f48d29ec2ed77409d6859abb078937ed5769abf410",
+      "archive_id": "archive.agentscape-issue-1~e87e5066"
+    }
+  ]
+}
