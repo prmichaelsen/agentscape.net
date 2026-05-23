@@ -185,6 +185,9 @@ export function layoutHtml({ title, description, body, canonical }) {
     .page-nav { font-size:0.92rem; color:var(--muted); border-top:1px solid var(--rule); margin-top:2.5rem; padding-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; }
     .page-nav a { color:var(--accent); text-decoration:none; }
     .page-nav a:hover { text-decoration:underline; }
+    .site-footer { font-size:0.88rem; color:var(--muted); border-top:1px solid var(--rule); margin-top:2.5rem; padding-top:1rem; }
+    .site-footer a { color:var(--accent); text-decoration:none; }
+    .site-footer a:hover { color:var(--accent-strong); text-decoration:underline; }
     pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
     pre { background: rgba(0,0,0,0.04); padding: 0.75rem 1rem; border-radius: 0.4rem; overflow-x:auto; }
     @media (prefers-color-scheme: dark) {
@@ -199,6 +202,9 @@ export function layoutHtml({ title, description, body, canonical }) {
       <div class="issue">assessing the agentic landscape</div>
     </header>
     ${body}
+    <footer class="site-footer">
+      <a href="https://github.com/prmichaelsen/agentscape.net">Source on GitHub</a>
+    </footer>
   </main>
 </body>
 </html>`;
