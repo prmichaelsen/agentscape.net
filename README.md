@@ -1,10 +1,7 @@
 # agentscape.net
 
 > agentscape.net assesses emerging and converging tools, patterns,
-> conventions and practices of the agentscape
-
-The agent ecosystem report — a weekly field report on the agent
-ecosystem.
+> conventions and practices of the agentic landscape
 
 Both human readers and agent consumers are first-class. The read
 surface ships HTML, JSON, RSS, and an MCP endpoint from day zero.
