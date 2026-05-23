@@ -23,7 +23,7 @@ export async function onRequestGet(context) {
   }
 
   const issue = await env.DB.prepare(
-    "SELECT id, issue_number, slug, title, publish_date, masthead_state " +
+    "SELECT id, issue_number, slug, title, publish_date, masthead_state, intro " +
       "FROM issues WHERE issue_number = ? AND deleted_at IS NULL"
   )
     .bind(n)
@@ -63,7 +63,7 @@ export async function onRequestGet(context) {
       WHERE s.issue_id = ?
         AND s.deleted_at IS NULL
         AND s.superseded_by_id IS NULL
-      ORDER BY s.section_id ASC`
+      ORDER BY COALESCE(s.slot, 9999), s.section_id ASC`
   )
     .bind(issue.id)
     .all();
@@ -137,9 +137,14 @@ export async function onRequestGet(context) {
   }
   const navHtml = `<nav class="page-nav">${navParts.join(" · ")}</nav>`;
 
+  const introHtml = issue.intro
+    ? `<p class="issue-intro">${htmlEscape(issue.intro)}</p>`
+    : "";
+
   const body = `
   <h1>${htmlEscape(issue.title)}</h1>
   <p class="frame">Issue ${issue.issue_number} · ${htmlEscape(issue.publish_date)}</p>
+  ${introHtml}
   ${tocHtml}
   <hr class="section-divider" />
   ${sectionsHtml}
