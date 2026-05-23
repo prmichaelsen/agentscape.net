@@ -17,6 +17,20 @@
       ],
       "source_hash_sha256": "218516be5d41adf7f91c55f48d29ec2ed77409d6859abb078937ed5769abf410",
       "archive_id": "archive.agentscape-issue-1~e87e5066"
+    },
+    {
+      "section": 2,
+      "slug": "mcp-spec-to-substrate",
+      "title": "MCP went from spec to substrate in nine months",
+      "published_at": "2026-05-23T13:46:00Z",
+      "html_url": "https://agentscape.net/issues/1/mcp-spec-to-substrate/",
+      "json_url": "https://agentscape.net/issues/1/mcp-spec-to-substrate/index.json",
+      "spine_tags": [
+        "what-is-the-new-vocabulary",
+        "what-best-practices-are-being-made"
+      ],
+      "source_hash_sha256": "11bb1f77aba73a4ea9089d3f3edc6a012b2f84acdb14a6f6120b8dbf4b0b65de",
+      "archive_id": "archive.agentscape-issue-1~e87e5066"
     }
   ]
 }
