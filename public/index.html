@@ -10,12 +10,23 @@
   <style>
     :root {
       color-scheme: light dark;
-      --fg: #111;
-      --muted: #555;
-      --bg: #fafafa;
+      /* Light theme is the default. White background, blue accents. */
+      --fg: #111827;
+      --muted: #4b5563;
+      --bg: #ffffff;
+      --rule: #e5e7eb;
+      --accent: #2563eb;        /* tailwind blue-600 */
+      --accent-strong: #1d4ed8; /* tailwind blue-700 */
     }
     @media (prefers-color-scheme: dark) {
-      :root { --fg: #eee; --muted: #aaa; --bg: #111; }
+      :root {
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --bg: #0b1220;
+        --rule: #1f2937;
+        --accent: #60a5fa;        /* tailwind blue-400 — lifted for contrast */
+        --accent-strong: #93c5fd; /* tailwind blue-300 */
+      }
     }
     html, body {
       margin: 0; padding: 0;
@@ -33,6 +44,7 @@
       font-weight: 600;
       margin: 0 0 0.25rem;
       letter-spacing: -0.01em;
+      color: var(--accent);
     }
     .sub {
       color: var(--muted);
@@ -42,14 +54,17 @@
     p.spine {
       font-size: 1.125rem;
       margin: 0 0 2rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.875rem;
     }
     .status {
-      border-top: 1px solid var(--muted);
+      border-top: 1px solid var(--rule);
       padding-top: 1rem;
       color: var(--muted);
       font-size: 0.95rem;
     }
-    a { color: inherit; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-strong); text-decoration: underline; }
   </style>
 </head>
 <body>
