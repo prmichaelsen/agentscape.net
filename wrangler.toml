@@ -1,3 +1,8 @@
 name = "agentscape-net"
 pages_build_output_dir = "./public"
 compatibility_date = "2026-05-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "agentscape"
+database_id = "61750ab3-a500-46a1-84ae-7b031fa2a2c6"
