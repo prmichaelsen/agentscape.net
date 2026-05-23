@@ -182,6 +182,9 @@ export function layoutHtml({ title, description, body, canonical }) {
     .sources { font-size:0.95rem; color:var(--muted); }
     .sources a { color:var(--accent); }
     .coi { font-size:0.92rem; color:var(--muted); border-top:1px solid var(--rule); margin-top:2rem; padding-top:1rem; }
+    .page-nav { font-size:0.92rem; color:var(--muted); border-top:1px solid var(--rule); margin-top:2.5rem; padding-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; }
+    .page-nav a { color:var(--accent); text-decoration:none; }
+    .page-nav a:hover { text-decoration:underline; }
     pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
     pre { background: rgba(0,0,0,0.04); padding: 0.75rem 1rem; border-radius: 0.4rem; overflow-x:auto; }
     @media (prefers-color-scheme: dark) {

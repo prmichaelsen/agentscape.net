@@ -51,6 +51,34 @@ export async function onRequestGet(context) {
     .bind(s.id)
     .all();
 
+  // Prev/next section within the parent issue (publication order = section_id ASC).
+  const prevSection = await env.DB.prepare(
+    `SELECT id, title FROM sections
+       WHERE issue_id = ? AND deleted_at IS NULL AND superseded_by_id IS NULL
+         AND section_id < ?
+       ORDER BY section_id DESC LIMIT 1`
+  )
+    .bind(s.issue_id, s.section_id)
+    .first();
+  const nextSection = await env.DB.prepare(
+    `SELECT id, title FROM sections
+       WHERE issue_id = ? AND deleted_at IS NULL AND superseded_by_id IS NULL
+         AND section_id > ?
+       ORDER BY section_id ASC LIMIT 1`
+  )
+    .bind(s.issue_id, s.section_id)
+    .first();
+
+  const navParts = [];
+  if (prevSection) {
+    navParts.push(`<a href="/sections/${htmlEscape(prevSection.id)}">← Previous section</a>`);
+  }
+  navParts.push(`<a href="/issues/${s.issue_number}">Read full issue</a>`);
+  if (nextSection) {
+    navParts.push(`<a href="/sections/${htmlEscape(nextSection.id)}">Next section →</a>`);
+  }
+  const navHtml = `<nav class="page-nav">${navParts.join(" · ")}</nav>`;
+
   const body = s.body ? renderMarkdown(s.body) : "";
   const citesHtml = cites.length
     ? `<div class="sources"><h3>Sources</h3><ul>${cites
@@ -74,6 +102,7 @@ export async function onRequestGet(context) {
         <p class="frame">${htmlEscape(s.frame)}</p>
         ${body}
         ${citesHtml}
+        ${navHtml}
       `,
     })
   );

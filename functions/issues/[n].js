@@ -82,6 +82,20 @@ export async function onRequestGet(context) {
     (citationsBySection[c.section_id] = citationsBySection[c.section_id] || []).push(c);
   }
 
+  // Prev/next issue lookup for bottom-of-page nav.
+  const prevIssue = await env.DB.prepare(
+    "SELECT issue_number FROM issues WHERE issue_number < ? AND deleted_at IS NULL " +
+      "ORDER BY issue_number DESC LIMIT 1"
+  )
+    .bind(n)
+    .first();
+  const nextIssue = await env.DB.prepare(
+    "SELECT issue_number FROM issues WHERE issue_number > ? AND deleted_at IS NULL " +
+      "ORDER BY issue_number ASC LIMIT 1"
+  )
+    .bind(n)
+    .first();
+
   const sectionsHtml = sections
     .map((s) => {
       const body = s.lf_body ? renderMarkdown(s.lf_body) : "";
@@ -113,12 +127,23 @@ export async function onRequestGet(context) {
         .join("")}</ul>`
     : "<p><em>No sections published yet.</em></p>";
 
+  const navParts = [];
+  if (prevIssue) {
+    navParts.push(`<a href="/issues/${prevIssue.issue_number}">← Previous issue</a>`);
+  }
+  navParts.push(`<a href="/issues/">All issues</a>`);
+  if (nextIssue) {
+    navParts.push(`<a href="/issues/${nextIssue.issue_number}">Next issue →</a>`);
+  }
+  const navHtml = `<nav class="page-nav">${navParts.join(" · ")}</nav>`;
+
   const body = `
   <h1>${htmlEscape(issue.title)}</h1>
   <p class="frame">Issue ${issue.issue_number} · ${htmlEscape(issue.publish_date)}</p>
   ${tocHtml}
   <hr class="section-divider" />
   ${sectionsHtml}
+  ${navHtml}
   `;
 
   const url = new URL(request.url);
